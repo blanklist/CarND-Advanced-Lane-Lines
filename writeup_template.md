@@ -68,6 +68,8 @@ I used a combination of color and gradient thresholds to generate a binary image
 
 On my second submission, I combined multiple thresholds including hls, lab, and luv. The result made for a more consistent video as each threshold worked well to bring out the yellow or white lines under various conditions.
 
+Third submission: It was suggested that I remove the hls threshold. After multiple attempts at creating a wholly consistent output video, I reverted to the three combined thresholds. The white lines were continually difficult to track especially in challenging conditions.
+
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
 The code for my perspective transform includes a function called `perspective_transform_matrix()`, which appears in lines 5 through 31, cell #6 in the file `pipeline.ipynb` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `perspective_transform_matrix()` function takes as input an image (`img`).  I chose to hardcode the source and destination points in the following manner:
@@ -131,3 +133,5 @@ https://github.com/blanklist/CarND-Advanced-Lane-Lines/blob/master/output_images
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 The majority of this project was provided in the lecture section. The complications arose when putting multiple pieces together to create the pipeline() function. I was able to successfully implement the incremental steps in the earlier cell blocks. The pipeline() function then takes those steps and processes the images by leveraging early work. The main failing of my implementation is that each image is independent and does not refer to data found in the most recent images. If I were to spend more time on this project I would first create a Line() class for both the left and right lines. This class would enable me to keep track of the 'state' of both right and left lines and refer to the recent past of those lines in order to inform current measurements and make sanity checks throughout.
+
+Third submission: I've added sanity checks for lane width and radius. The lane width checks width at top, middle, and bottom of lane, calculates the average, and then compares each measurement against that average. The result is a check that will ignore frames in which the lane is oddly shaped and/or not rectangular. The radius check is less robust, simply checking for extremely large radius measurements on left or right and ignoring those frames.
