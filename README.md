@@ -1,10 +1,4 @@
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Advanced Lane Finding Project**
+## Advanced Lane Finding Project
 
 The goals / steps of this project are the following:
 
@@ -43,7 +37,7 @@ I start by preparing "object points", which will be the (x, y, z) coordinates of
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function (line #23 of code cell 2).  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
-![cam cal][cam_cal.png]
+![cam cal][https://github.com/blanklist/CarND-Advanced-Lane-Lines/blob/master/cam_cal.png]
 
 ### Pipeline (single images)
 
@@ -52,13 +46,13 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 Once the camera is calibrated, one can use the same calibration values and replace the chessboard image with the more pertinent and 'real world' road image.
 Here is an example of the same image calibration applied to a road image:
 
-![road img cal][road_img_cal.png]
+![road img cal][https://github.com/blanklist/CarND-Advanced-Lane-Lines/blob/master/road_img_cal.png]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
 I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines 3 through 20, cell #5, in `pipeline.ipynb`).  Here's an example of my output for this step.
 
-![img transform][img_transform.png]
+![img transform][https://github.com/blanklist/CarND-Advanced-Lane-Lines/blob/master/img_transform.png]
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
@@ -89,13 +83,13 @@ This resulted in the following source and destination points:
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![warped][warped.png]
+![warped][https://github.com/blanklist/CarND-Advanced-Lane-Lines/blob/master/warped.png]
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 I wrote two funcitons: find_lane_pixels() and fit_polynomial() found in cell #7 which attempt to find lane-line pixels and fit their positions with polynomials. The find_lane_pixels() function uses a histogram on the lowest part of the image to predict the most likely lane line pixels. The fit_polynomial() funciton leverages np.polyfit to calculate a second order polynomial based on the findings of find_lane_pixels() function.
 
-![poly][poly.png]
+![poly][https://github.com/blanklist/CarND-Advanced-Lane-Lines/blob/master/poly.png]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
@@ -105,7 +99,7 @@ I determined the radius of curvature of left and right lines in cell #9 in my co
 
 I implemented this step in cell #10 in my code in `pipeline.ipynb` in the function `redraw()`.  Here is an example of my result on a test image:
 
-![redraw][redraw.png]
+![redraw][https://github.com/blanklist/CarND-Advanced-Lane-Lines/blob/master/redraw.png]
 
 ---
 
@@ -113,7 +107,7 @@ I implemented this step in cell #10 in my code in `pipeline.ipynb` in the functi
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
-Here's a [link to my video result](./output_images/project_video_processed.mp4)
+Here's a [link to my video result](https://github.com/blanklist/CarND-Advanced-Lane-Lines/blob/master/output_images/project_video_processed.mp4)
 
 ---
 
